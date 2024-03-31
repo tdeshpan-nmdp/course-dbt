@@ -5,6 +5,9 @@ models:
     description: Dimension table for addresses on the platform.  
     columns:
       - name: address_id
+        tests:
+            - not_null
+            - unique
       - name: address
       - name: zipcode
       - name: state 
@@ -13,6 +16,9 @@ models:
     description: Fact table of events occuring on the site. Information includes which page the event occured and if the event was associated with a product or order.   
     columns:
       - name: event_id
+        tests:
+            - not_null
+            - unique
       - name: session_id
       - name: user_id
       - name: page_url 
@@ -26,15 +32,25 @@ models:
       - name: order_id
       - name: product_id
       - name: quantity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: '>= 1'
   - name: stg_postgres__orders
     description: A fact table of orders that occured on the site. Includes information regarding cost and shipping details.    
     columns:
       - name: order_id
+        tests:
+          - not_null
+          - unique
       - name: user_id
       - name: promo_id
       - name: address_id 
       - name: created_at
       - name: order_cost
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 1'
       - name: shipping_cost
       - name: order_total
       - name: tracking_id
@@ -46,21 +62,44 @@ models:
     description: A dimension table for product information regarding price and inventory. 
     columns:
       - name: product_id
+        tests:
+          - not_null
+          - unique
       - name: name
       - name: price
-      - name: inventory 
+        tests:
+            - dbt_utils.expression_is_true:
+                expression: '>= 1'
+      - name: inventory
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 1'
   - name: stg_postgres__promos
     description: A dimension table for the various promos, their discount amount and status.     
     columns:
       - name: promo_id
+        tests:
+          - not_null
+          - unique
       - name: discount
+        tests:
+          - not_null
       - name: status
+        tests:
+          - not_null
   - name: stg_postgres__users
     description: A dimension table for the various promos, their discount amount and status.     
     columns:
       - name: user_id
+        tests:
+          - not_null
+          - unique
       - name: first_name
+        tests:
+          - dbt_utils.not_empty_string
       - name: last_name
+        tests:
+          - dbt_utils.not_empty_string
       - name: email 
       - name: phone_number
       - name: created_at

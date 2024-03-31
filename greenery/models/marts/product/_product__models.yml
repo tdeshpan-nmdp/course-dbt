@@ -4,3 +4,17 @@ models:
 
   - name: fact_page_views
     description: Contains all page view events from greenery’s events data
+    columns:
+      - name: event_id
+        tests:
+            - not_null
+            - unique
+      - name: session_id
+      - name: user_id
+      - name: page_url 
+      - name: created_at
+      - name: event_type
+      - name: order_id
+      - name: product_name
+        tests:
+            - not_null
