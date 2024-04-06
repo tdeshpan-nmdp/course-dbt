@@ -7,7 +7,7 @@ Template repository for the projects and environment of the course: Analytics en
 ## Answers
 - [Week 1](./greenery/week_1_readme.md)
 - [Week 2](./greenery/week_2_readme.md)
-- [Week 2](./greenery/week_3_readme.md)
+- [Week 3](./greenery/week_3_readme.md)
 
 
 ## License
