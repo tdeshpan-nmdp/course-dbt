@@ -96,10 +96,10 @@ models:
           - unique
       - name: first_name
         tests:
-          - dbt_utils.not_empty_string
+          - not_null
       - name: last_name
         tests:
-          - dbt_utils.not_empty_string
+          - not_null
       - name: email 
       - name: phone_number
       - name: created_at

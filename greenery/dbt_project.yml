@@ -37,3 +37,5 @@ models:
       +materialized: table
     staging:
       +materialized: view
+    +post-hook:
+      - "{{ grant(role='reporting') }}"

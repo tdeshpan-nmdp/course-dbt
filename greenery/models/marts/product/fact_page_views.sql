@@ -32,7 +32,8 @@ page_views as (
         events.CREATED_AT, 
         events.EVENT_TYPE, 
         events.ORDER_ID, 
-        products.NAME
+        products.NAME,
+        products.PRODUCT_ID
     from events
     join products on events.PRODUCT_ID = products.PRODUCT_ID
     where event_type = 'page_view'
