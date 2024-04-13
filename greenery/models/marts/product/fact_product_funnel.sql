@@ -21,4 +21,4 @@ SELECT
     ROUND((1 - (add_to_cart_count / page_view_count)) * 100, 2) AS drop_off_prcntg_page_view_to_cart,
     ROUND((1 - (checkout_count / add_to_cart_count)) * 100, 2) AS drop_off_prcntg_cart_to_checkout
 FROM 
-    EVENT_TYPE_COUNTS;
+    EVENT_TYPE_COUNTS
