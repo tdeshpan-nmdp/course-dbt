@@ -18,3 +18,12 @@ models:
       - name: product_name
         tests:
             - not_null
+  - name: fact_product_funnel
+    description: Product funnel information
+    columns:
+      - name: page_view_count
+      - name: add_to_cart_count
+      - name: checkout_count
+      - name: drop_off_prcntg_page_view_to_cart 
+      - name: drop_off_prcntg_cart_to_checkout
+ 

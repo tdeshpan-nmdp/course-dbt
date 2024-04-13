@@ -1,0 +1,13 @@
+version: 2
+
+exposures:  
+  - name: product_funnel_dashboard
+    description: >
+      Product funnel information
+    type: dashboard
+    maturity: high
+    owner:
+      name: Tdeshpan NMDP
+      email: tdeshpannmdp@greenery.com
+    depends_on:
+      - ref('fact_product_funnel')
